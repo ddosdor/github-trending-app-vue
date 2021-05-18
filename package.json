@@ -1,0 +1,11 @@
+{
+  "name": "github-tranding-app-vue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ddosdor/github-trending-app-vue.git",
+  "author": "ddosdor <ddosdor@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "heroku-postbuild": "cd api && yarn build"
+  }
+}
