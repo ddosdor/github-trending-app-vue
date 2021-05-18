@@ -6,6 +6,6 @@
   "author": "ddosdor <ddosdor@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "cd api && yarn build"
+    "heroku-postbuild": "cd api && npm run build"
   }
 }
