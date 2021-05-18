@@ -5,6 +5,9 @@
   "repository": "https://github.com/ddosdor/github-trending-app-vue.git",
   "author": "ddosdor <ddosdor@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "12.14.1"
+  },
   "scripts": {
     "heroku-postbuild": "cd api && npm run build"
   }
