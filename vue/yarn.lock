@@ -1940,7 +1940,7 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.11.tgz#20d22dd0da7d358bb21c17f9bde8628152642c77"
   integrity sha512-b+zB8A2so8eCE0JsxjL24J7vdGl8rzPQ09hZNhystm+KqSbKcAej1A+Hbva1rCMmTTqA+hFnUSDc5kouEo0JzA==
 
-"@vue/test-utils@^2.0.0-0":
+"@vue/test-utils@^2.0.0-rc.6":
   version "2.0.0-rc.6"
   resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-2.0.0-rc.6.tgz#d0aac24d20450d379e183f70542c0822670b8783"
   integrity sha512-0cnQBVH589PwgqWpyv1fgCAz+9Ram/MsvN3ZEAEVXi1aPuhUa22EudGc0WezQ9PKwR+L40NrBmt3JBXE2tSRRQ==
@@ -10302,6 +10302,11 @@ source-map-url@^0.4.0:
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.1.tgz#0af66605a745a5a2f91cf1bbf8a7afbc283dec56"
   integrity sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==
 
+source-map@0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+  integrity sha1-dc449SvwczxafwwRjYEzSiu19BI=
+
 source-map@^0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
@@ -11425,15 +11430,16 @@ vue-jest@^3.0.5:
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-jest@^5.0.0-0:
-  version "5.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/vue-jest/-/vue-jest-5.0.0-alpha.8.tgz#45b12335dbb73c9ab8309f1e24b2fc8781d519f9"
-  integrity sha512-4FqH69T6X6rOglrEui/mDWvOTGB9ammmCXLVdS4s524D4Emx8fBC4sKAPFAUZfbWpYh/7i7xWoPwF4agfyGWwA==
+vue-jest@^5.0.0-alpha.9:
+  version "5.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/vue-jest/-/vue-jest-5.0.0-alpha.9.tgz#48c86deeba28c16c5a2b2c823f0145a9471d5ff7"
+  integrity sha512-OEegZLEc17ELrDhkGOpU9ZX2U8o7aOuy+pHsHhrvBP3tWiuQi+GJnJOaCNimCej41ugZDKc9KI5LuSB8l24U5Q==
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.2.0"
     chalk "^2.1.0"
     convert-source-map "^1.6.0"
     extract-from-css "^0.4.4"
+    source-map "0.5.6"
     tsconfig "^7.0.0"
 
 "vue-loader-v16@npm:vue-loader@^16.1.0":
