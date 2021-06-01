@@ -1,18 +1,16 @@
-import { mount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import UiInput from '@/components/Common/Ui/UiInput.vue';
 
 describe('components/Common/Ui/UiInput', () => {
-  it('Should be focused after mounted if has autofocus props', async () => {
-    document.body.innerHTML = `
-      <div id="app" />
-     `;
+  it('Should not be focused after mounted by default', async () => {
+    let component = render(UiInput);
+    const input = await component?.findByTestId('ui-input');
+    expect(input?.matches(':focus')).toEqual(false);
+  });
 
-    const withFocus = mount(UiInput, {
-      attachTo: document.getElementById('app'),
-      props: {
-        autofocus: true,
-      },
-    });
-    expect(withFocus.element).toBe(document.activeElement);
+  it('Should be focused after mounted if has autofocus props', async () => {
+    let component = render(UiInput, { props: { autofocus: true } });
+    const input = await component?.findByTestId('ui-input');
+    expect(input?.matches(':focus')).toEqual(true);
   });
 });

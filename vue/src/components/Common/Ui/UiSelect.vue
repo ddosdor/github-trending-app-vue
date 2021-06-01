@@ -3,11 +3,13 @@
     <div ref="$selectRef"
          class="UiSelect h-6 leading-5 flex items-center cursor-pointer transition duration-75 text-gray-600 hover:text-gray-800"
          @click="toggleOptions"
+         data-testid="UiSelect__select"
     >
       {{ title }}:
       <span class="ml-1 font-bold flex">
         <span class="inline-block truncate"
               :class="{'w-24': String(selectedItem[asLabel]).length >= 15}"
+              data-testid="UiSelect__selected-item"
         >
           {{ selectedItem[asLabel] || 'Any' }}
         </span>
@@ -28,7 +30,8 @@
     >
       <div ref="$optionsRef"
            class="animate-fade-in bg-white border border-gray-200 rounded shadow-md z-50 w-72"
-           :class="{ 'hidden': !isOptionsVisible }"
+           v-show="isOptionsVisible"
+           data-testid="UiSelect__options-list-container"
       >
         <div class="px-4 py-2 border-b border-gray-200 font-semibold text-sm">
           {{ placeholder }}
@@ -41,12 +44,16 @@
                    v-model="filterText"
                    :placeholder="filteringPlaceholder"
                    autofocus
+                   data-testid="UiSelect__filter-input"
           />
         </div>
-        <ul class="max-h-96 overflow-auto">
+        <ul class="max-h-96 overflow-auto"
+            data-testid="UiSelect__options-list"
+        >
           <li v-if="selectedValue && clearable"
               class="cursor-pointer px-4 py-2 border-b text-xs font-bold flex border-gray-300 hover:bg-blue-600 hover:text-white transition-colors duration-100"
               @click="handleClear"
+              data-testid="UiSelect__clear-selection"
           >
             <span>Clear selection</span>
             <svg xmlns="http://www.w3.org/2000/svg"

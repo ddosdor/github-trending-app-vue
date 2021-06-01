@@ -2,6 +2,7 @@
   <div ref="$tooltipContentRef"
        :class="{'hidden': !isTooltipVisible}"
        class="bg-gray-800 text-white rounded-md p-2 relative animate-fade-in shadow-lg"
+       data-testid="ui-tooltip-content"
   >
     <slot name="content" />
     <div class="arrow"
@@ -10,6 +11,7 @@
   </div>
   <div ref="$tooltipRef"
        class="flex items-center"
+       data-testid="ui-tooltip-ref"
        @mouseenter="toggleTooltip"
        @mouseleave="toggleTooltip"
   >

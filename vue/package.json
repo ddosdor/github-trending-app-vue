@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.1.0",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/vue": "^6.4.2",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
