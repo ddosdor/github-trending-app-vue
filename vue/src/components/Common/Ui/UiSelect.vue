@@ -1,6 +1,6 @@
 <template>
-  <div v-click-outside="hideOptions">
-    <div ref="$selectRef"
+  <div v-click-outside="hideOptionsOnDesktop">
+    <div ref="uiSelectRef"
          class="UiSelect h-6 leading-5 flex items-center cursor-pointer transition duration-75 text-gray-600 hover:text-gray-800"
          @click="toggleOptions"
          data-testid="UiSelect__select"
@@ -25,10 +25,10 @@
         </svg>
       </span>
     </div>
-    <UiModalWrapper :disabled="shouldShowAsModal"
-                    v-model="isOptionsVisible"
+    <UiModalWrapper :disabled="!shouldShowAsModal"
+                    v-model:isVisible="isOptionsVisible"
     >
-      <div ref="$optionsRef"
+      <div ref="uiSelectOptionsRef"
            class="animate-fade-in bg-white border border-gray-200 rounded shadow-md z-50 w-72"
            v-show="isOptionsVisible"
            data-testid="UiSelect__options-list-container"
@@ -150,8 +150,8 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const { sm, md } = useMediaQuery();
-    const $selectRef = ref<Element>({} as Element);
-    const $optionsRef = ref<HTMLElement>({} as HTMLElement);
+    const uiSelectRef = ref<Element>({} as Element);
+    const uiSelectOptionsRef = ref<HTMLElement>({} as HTMLElement);
     const isOptionsVisible = ref(false);
     const filterText = ref('');
     const selectedValue = ref<string | number | boolean | null>(null);
@@ -206,7 +206,7 @@ export default defineComponent({
       isOptionsVisible.value = true;
 
       if (!shouldShowAsModal.value) {
-        createPopper($selectRef.value, $optionsRef.value, {
+        createPopper(uiSelectRef.value, uiSelectOptionsRef.value, {
           placement: 'bottom-end',
           modifiers: [{
             name: 'offset',
@@ -218,8 +218,8 @@ export default defineComponent({
       }
     }
 
-    function hideOptions() {
-      if (isOptionsVisible.value) {
+    function hideOptionsOnDesktop() {
+      if (shouldShowAsModal.value || isOptionsVisible.value) {
         isOptionsVisible.value = false;
       }
     }
@@ -240,8 +240,8 @@ export default defineComponent({
 
     return {
       // template refs
-      $selectRef,
-      $optionsRef,
+      uiSelectRef,
+      uiSelectOptionsRef,
       // data
       isOptionsVisible,
       filterText,
@@ -252,7 +252,7 @@ export default defineComponent({
       shouldShowAsModal,
       // methods
       toggleOptions,
-      hideOptions,
+      hideOptionsOnDesktop,
       handleSelect,
       handleClear,
     };

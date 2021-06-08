@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useTrendingDevelopers } from '@/composables/useTrendingDevelopers';
+import { useTrendingDevelopers, useDataFiltering } from '@/composables';
 import EmptyList from '@/components/Common/EmptyList.vue';
 import TrendingDevelopersList from '@/components/TrendingDevelopers/TrendingDevelopersList.vue';
 
@@ -19,7 +19,8 @@ export default defineComponent({
 
   setup() {
     const { isLoading, isEmpty, getTrendingDevelopers } = useTrendingDevelopers();
-    getTrendingDevelopers();
+    const { filterParams } = useDataFiltering();
+    getTrendingDevelopers(filterParams.value);
     return {
       isEmpty, isLoading,
     };

@@ -29,6 +29,7 @@ describe('components/Common/Ui/UiSelect', () => {
   };
 
   beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => jest.fn());
     component = render(UiSelect, {
       props: {
         ...mockedProps,
@@ -177,13 +178,13 @@ describe('components/Common/Ui/UiSelect', () => {
     const select = component.getByTestId('UiSelect__select');
     await fireEvent.click(select);
     await fireEvent.click(component.getByText(/Benjamin/i));
-    expect(component.emitted()['update:modelValue'][0]).toStrictEqual([(mockedProps.optionsList.find(el => el.name === 'Benjamin'))?.slug]);
-    expect(component.emitted().change[0]).toStrictEqual([(mockedProps.optionsList.find(el => el.name === 'Benjamin'))?.slug]);
+    expect(component.emitted()['update:modelValue'][0]).toStrictEqual([(mockedProps.optionsList.find((el) => el.name === 'Benjamin'))?.slug]);
+    expect(component.emitted().change[0]).toStrictEqual([(mockedProps.optionsList.find((el) => el.name === 'Benjamin'))?.slug]);
 
     await fireEvent.click(select);
     await fireEvent.click(component.getByText(/Harper/i));
-    expect(component.emitted()['update:modelValue'][1]).toStrictEqual([(mockedProps.optionsList.find(el => el.name === 'Harper'))?.slug]);
-    expect(component.emitted().change[1]).toStrictEqual([(mockedProps.optionsList.find(el => el.name === 'Harper'))?.slug]);
+    expect(component.emitted()['update:modelValue'][1]).toStrictEqual([(mockedProps.optionsList.find((el) => el.name === 'Harper'))?.slug]);
+    expect(component.emitted().change[1]).toStrictEqual([(mockedProps.optionsList.find((el) => el.name === 'Harper'))?.slug]);
   });
 
   it('Should emit "clear" if element responsible for cleaning is clicked', async () => {

@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useTrendingRepositories } from '@/composables';
+import { useTrendingRepositories, useDataFiltering } from '@/composables';
 import EmptyList from '@/components/Common/EmptyList.vue';
 import TrendingRepositoriesList from '@/components/TrendingRepositories/TrendingRepositoriesList.vue';
 
@@ -19,7 +19,8 @@ export default defineComponent({
 
   setup() {
     const { isLoading, isEmpty, getTrendingRepos } = useTrendingRepositories();
-    getTrendingRepos();
+    const { filterParams } = useDataFiltering();
+    getTrendingRepos(filterParams.value);
     return {
       isEmpty, isLoading,
     };

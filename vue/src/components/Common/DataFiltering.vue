@@ -13,6 +13,7 @@
               as-value="urlParam"
               filterable
               clearable
+              data-testid="DataFiltering__select-spoken-language"
     />
     <UiSelect :options-list="languages"
               v-model="filterParams.language"
@@ -23,6 +24,7 @@
               as-value="urlParam"
               filterable
               clearable
+              data-testid="DataFiltering__select-language"
     />
     <UiSelect :options-list="dateRange"
               v-model="filterParams.since"
@@ -30,6 +32,7 @@
               placeholder="Adjust time span"
               as-label="name"
               as-value="urlParam"
+              data-testid="DataFiltering__select-data-range"
     />
     <UiTooltip>
       <template #content>
@@ -48,12 +51,10 @@
 
 <script lang="ts">
 import { useRoute } from 'vue-router';
-import { computed, defineComponent, watch } from 'vue';
+import { computed, defineComponent } from 'vue';
 import {
   useSpokenLanguages,
   useLanguages,
-  useTrendingRepositories,
-  useTrendingDevelopers,
   useDateRange,
   useDataFiltering,
 } from '@/composables';
@@ -74,29 +75,10 @@ export default defineComponent({
     const route = useRoute();
     const { isLoading: isLoadingSpokenLanguages, spokenLanguages } = useSpokenLanguages();
     const { isLoading: isLoadingLanguages, languages } = useLanguages();
-    const { getTrendingRepos } = useTrendingRepositories();
-    const { getTrendingDevelopers } = useTrendingDevelopers();
     const { dateRange } = useDateRange();
-    const { filterParams, setDefault } = useDataFiltering();
+    const { filterParams, setDefault, refreshListWhenChangingFiltersDependingOnRouting } = useDataFiltering();
 
-    const repositoryMapAccordingToRouteName: Record<string, { get(): void }> = {
-      TrendingRepositoryPage: {
-        get: getTrendingRepos,
-      },
-      TrendingDevelopersPage: {
-        get: getTrendingDevelopers,
-      },
-      none: { get: () => null },
-    };
-
-    watch(
-      () => filterParams.value,
-      () => {
-        const currentRouteName = route?.name || 'none';
-        repositoryMapAccordingToRouteName[currentRouteName.toString()].get();
-      },
-      { deep: true },
-    );
+    refreshListWhenChangingFiltersDependingOnRouting();
 
     return {
       isLoadingSpokenLanguages,
