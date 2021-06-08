@@ -1,22 +1,20 @@
 import { ref, computed, ComputedRef } from 'vue';
-import { TrendingDeveloper } from '@/repositories/types';
+import { TrendingDeveloper, TrendingDevelopersFilterParams } from '@/repositories/types';
 import TrendingDevelopersRepository from '@/repositories/TrendingDevelopersRepository';
-import { useDataFiltering } from './useDataFiltering';
 
 type UseTrendingDevelopersComposable = {
   isLoading: ComputedRef<boolean>
   isEmpty: ComputedRef<boolean>
   trendingDevelopers: ComputedRef<TrendingDeveloper[]>
-  getTrendingDevelopers(): Promise<void>,
+  getTrendingDevelopers(params: TrendingDevelopersFilterParams): Promise<void>,
 }
 
 const isLoading = ref<boolean>(false);
 const trendingDevelopers = ref<TrendingDeveloper[]>([]);
-const { filterParams } = useDataFiltering();
 
-async function getTrendingDevelopers(): Promise<void> {
+async function getTrendingDevelopers(params: TrendingDevelopersFilterParams = {}): Promise<void> {
   isLoading.value = true;
-  trendingDevelopers.value = await TrendingDevelopersRepository.get(filterParams.value);
+  trendingDevelopers.value = await TrendingDevelopersRepository.get(params);
   isLoading.value = false;
 }
 

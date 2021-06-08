@@ -1,15 +1,17 @@
 <template>
-  <div ref="$tooltipContentRef"
-       :class="{'hidden': !isTooltipVisible}"
+  <div ref="uiTooltipContentRef"
+       v-show="isTooltipVisible"
        class="bg-gray-800 text-white rounded-md p-2 relative animate-fade-in shadow-lg"
+       data-testid="UiTooltip__content"
   >
     <slot name="content" />
     <div class="arrow"
-         ref="$tooltipArrowRef"
+         ref="uiTooltipArrowRef"
     />
   </div>
-  <div ref="$tooltipRef"
+  <div ref="uiTooltipRef"
        class="flex items-center"
+       data-testid="UiTooltip__reference"
        @mouseenter="toggleTooltip"
        @mouseleave="toggleTooltip"
   >
@@ -28,16 +30,16 @@ export default defineComponent({
 
   setup() {
     const isTooltipVisible = ref(false);
-    const $tooltipRef = ref<Element>({} as Element);
-    const $tooltipContentRef = ref<HTMLElement>({} as HTMLElement);
-    const $tooltipArrowRef = ref<Element>({} as Element);
+    const uiTooltipRef = ref<Element>({} as Element);
+    const uiTooltipContentRef = ref<HTMLElement>({} as HTMLElement);
+    const uiTooltipArrowRef = ref<Element>({} as Element);
 
     function toggleTooltip() {
       if (isTooltipVisible.value) {
         isTooltipVisible.value = false;
       } else {
         isTooltipVisible.value = true;
-        createPopper($tooltipRef.value, $tooltipContentRef.value, {
+        createPopper(uiTooltipRef.value, uiTooltipContentRef.value, {
           placement: 'top',
           modifiers: [{
             name: 'offset',
@@ -47,7 +49,7 @@ export default defineComponent({
           }, {
             name: 'arrow',
             options: {
-              element: $tooltipArrowRef.value,
+              element: uiTooltipArrowRef.value,
               padding: (padding: StateRects) => padding.reference.width / 2,
             },
           }],
@@ -57,9 +59,9 @@ export default defineComponent({
 
     return {
       isTooltipVisible,
-      $tooltipRef,
-      $tooltipContentRef,
-      $tooltipArrowRef,
+      uiTooltipRef,
+      uiTooltipContentRef,
+      uiTooltipArrowRef,
       toggleTooltip,
     };
   },
