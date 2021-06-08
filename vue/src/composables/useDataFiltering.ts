@@ -4,10 +4,10 @@ import { useTrendingRepositories } from '@/composables/useTrendingRepositories';
 import { useTrendingDevelopers } from '@/composables/useTrendingDevelopers';
 import { SinceType, TrendingRepoFilterParams, TrendingDevelopersFilterParams } from '@/repositories/types';
 
-export const { getTrendingRepos } = useTrendingRepositories();
-export const { getTrendingDevelopers } = useTrendingDevelopers();
+const { getTrendingRepos } = useTrendingRepositories();
+const { getTrendingDevelopers } = useTrendingDevelopers();
 
-export const DEFAULT_FILTERS = {
+const DEFAULT_FILTERS = {
   language: null,
   since: 'daily' as SinceType,
   spoken_language_code: null,
@@ -39,6 +39,7 @@ function refreshListWhenChangingFiltersDependingOnRouting(): void {
     (newValue) => {
       switch (true) {
         case route?.name === 'TrendingRepositoryPage':
+          console.log(getTrendingRepos);
           getTrendingRepos(newValue);
           break;
         case route?.name === 'TrendingDevelopersPage':
