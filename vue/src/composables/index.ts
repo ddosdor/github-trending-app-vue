@@ -1,3 +1,4 @@
+export { useAppGlobalState } from './useAppGlobalState';
 export { useTrendingRepositories } from './useTrendingRepositories';
 export { useTrendingDevelopers } from './useTrendingDevelopers';
 export { useSpokenLanguages } from './useSpokenLanguages';
