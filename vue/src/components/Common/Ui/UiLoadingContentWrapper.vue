@@ -3,7 +3,7 @@
     <div v-if="isLoading"
          class="absolute top-14 w-full animate-fade-in-down"
     >
-      <UiLoadingSpinner />
+      <UiLoadingSpinner data-testid="ui-loading-spinner" />
     </div>
     <div :class="{'opacity-5' : isLoading, 'animate-fade-in-up': !isLoading }">
       <slot />

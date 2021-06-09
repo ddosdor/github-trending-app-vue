@@ -1,14 +1,15 @@
 <template>
   <input v-bind="$attrs"
-         ref="$inputRef"
+         ref="uiInputRef"
          :value="modelValue"
          @input="$emit('update:modelValue', $event.target.value)"
          class="border border-gray-300 rounded w-full px-4 py-2 text-xs focus:ring ring-blue-500 ring-opacity-30 outline-none"
+         data-testid="UiInput"
   >
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, nextTick } from 'vue';
+import { defineComponent, ref, nextTick } from 'vue';
 
 export default defineComponent({
   name: 'UiInput',
@@ -24,16 +25,14 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup(props) {
-    const $inputRef = ref();
+    const uiInputRef = ref();
 
-    onMounted(() => {
-      nextTick(() => {
-        if (props.autofocus) $inputRef.value.focus();
-      });
+    nextTick(() => {
+      if (props.autofocus) uiInputRef.value.focus();
     });
 
     return {
-      $inputRef,
+      uiInputRef,
     };
   },
 });
