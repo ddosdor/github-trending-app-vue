@@ -1,5 +1,8 @@
 <template>
-  <div class="DisabledApiMessage flex flex-col justify-center items-center py-8">
+  <div class="DisabledApiMessage flex flex-col justify-center items-center py-8
+              md:py-14
+             "
+  >
     <svg xmlns="http://www.w3.org/2000/svg"
          class="h-20 w-20 text-gray-700 opacity-10"
          fill="none"
@@ -24,7 +27,9 @@
     >
       API is currently disabled. Please refresh the page and try again.
     </span>
-    <UiButton>
+    <UiButton class="my-5"
+              @click="refreshApp"
+    >
       Refresh
     </UiButton>
   </div>
@@ -39,6 +44,16 @@ export default defineComponent({
 
   components: {
     UiButton,
+  },
+
+  setup() {
+    function refreshApp() {
+      window.location.reload();
+    }
+
+    return {
+      refreshApp,
+    };
   },
 });
 </script>

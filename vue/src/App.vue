@@ -11,8 +11,8 @@
         </template>
       </NavigationAndFiltersWrapper>
       <UiLoadingContentWrapper :is-loading="isLoading">
-        <DisabledApiMessage v-if="true" />
-        <!-- <router-view v-else /> -->
+        <DisabledApiMessage v-if="apiIsDisabled" />
+        <router-view v-else />
       </UiLoadingContentWrapper>
     </UiMainContent>
   </div>
