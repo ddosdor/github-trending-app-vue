@@ -39,7 +39,6 @@ function refreshListWhenChangingFiltersDependingOnRouting(): void {
     (newValue) => {
       switch (true) {
         case route?.name === 'TrendingRepositoryPage':
-          console.log(getTrendingRepos);
           getTrendingRepos(newValue);
           break;
         case route?.name === 'TrendingDevelopersPage':
