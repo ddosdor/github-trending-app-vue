@@ -1,4 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, CancelTokenSource } from 'axios';
+import { useAppGlobalState } from '@/composables';
+
+const { setApiDisabled } = useAppGlobalState();
 
 const API_CONFIG: AxiosRequestConfig = {
   baseURL: process.env.VUE_APP_API_URL,
@@ -34,6 +37,7 @@ export default abstract class Repository<TItem> {
       })).data;
       return response;
     } catch (err) {
+      if (err.code === 'ECONNABORTED') setApiDisabled();
       return [];
     }
   }
