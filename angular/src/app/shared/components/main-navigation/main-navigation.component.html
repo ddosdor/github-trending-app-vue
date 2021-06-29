@@ -1,0 +1,18 @@
+<nav class="flex">
+  <a routerLink="/"
+     class="w-full text-center font-semibold py-2 px-3 rounded-l-lg border transition-colors duration-200"
+     routerLinkActive #linkRepositories="routerLinkActive"
+     [class]="{ 'is-active': linkRepositories.isActive, 'is-inactive': !linkRepositories.isActive }"
+     [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Repositories
+  </a>
+  <a routerLink="/developers"
+     class="w-full text-center font-semibold py-2 px-3 rounded-r-lg border transition-colors duration-200"
+     routerLinkActive #linkDevelopers="routerLinkActive"
+     [class]="{ 'is-active': linkDevelopers.isActive, 'is-inactive': !linkDevelopers.isActive }"
+     [routerLinkActiveOptions]="{ exact: true }"  
+  >
+    Developers
+  </a>
+</nav>
