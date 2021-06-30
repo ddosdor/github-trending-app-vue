@@ -5,4 +5,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './layout-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutHeader {}
+export class LayoutHeaderComponent {}

@@ -8,9 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {
-  LayoutHeader,
-  LayoutMain,
-  LayoutNavigationAndFilters
+  LayoutHeaderComponent,
+  LayoutMainComponent,
+  LayoutNavigationAndFiltersComponent
 } from '@shared/layout';
 
 import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
@@ -18,9 +18,9 @@ import { MainNavigationComponent } from '@shared/components/main-navigation/main
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutHeader,
-    LayoutMain,
-    LayoutNavigationAndFilters,
+    LayoutHeaderComponent,
+    LayoutMainComponent,
+    LayoutNavigationAndFiltersComponent,
     MainNavigationComponent,
   ],
   imports: [
