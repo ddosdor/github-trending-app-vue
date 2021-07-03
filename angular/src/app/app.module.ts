@@ -1,8 +1,11 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
+
+import { AppConfigService } from './app-config.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +17,7 @@ import {
 } from '@shared/layout';
 
 import { MainNavigationComponent } from '@shared/components/main-navigation/main-navigation.component';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +31,16 @@ import { MainNavigationComponent } from '@shared/components/main-navigation/main
     CoreModule,
     SharedModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{
+    provide: APP_INITIALIZER,
+    multi: true,
+    deps: [AppConfigService],
+    useFactory: (appConfigService: AppConfigService) => 
+      () => appConfigService.getAppConfig()
+  }],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })
