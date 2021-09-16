@@ -17,6 +17,16 @@ module.exports = {
     'vue',
     '@typescript-eslint',
   ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+        ],
+        extensions: ['.ts', '.vue'],
+      },
+    },
+  },
   rules: {
     'max-len': ['warn', { code: 160 }],
     'vue/no-duplicate-attributes': [
@@ -47,6 +57,7 @@ module.exports = {
         allowFirstLine: true,
       },
     }],
+    'import/extensions': ['error', 'never', { vue: 'always' }],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'linebreak-style': 0,
