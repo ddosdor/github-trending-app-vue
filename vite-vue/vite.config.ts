@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: resolvePath('src') },
+      { find: '@shared', replacement: resolvePath('src/shared') },
     ],
   },
 });

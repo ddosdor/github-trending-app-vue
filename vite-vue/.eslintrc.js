@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-strongly-recommended',
     'airbnb-base',
   ],
   parserOptions: {
@@ -22,6 +22,7 @@ module.exports = {
       alias: {
         map: [
           ['@', './src'],
+          ['@shared', './src/shared'],
         ],
         extensions: ['.ts', '.vue'],
       },
