@@ -3,18 +3,12 @@
 </script>
 
 <main>
-  <h1 class="test-sass">
-    <span class="test-sass__text">Hello Svelte</span>
+  <h1 class="text-2xl">
+    <span class="text-red-500">Hello Svelte</span>
   </h1>
   <Counter />
 </main>
 
-<style lang="scss">
-.test-sass {
-  font-size: 28px;
-
-  &__text {
-    color: red;
-  }
-}
+<style global lang="scss">
+@import 'src/assets/theme/index.scss';  
 </style>
