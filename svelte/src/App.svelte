@@ -1,13 +1,14 @@
 <script lang="ts">
-  import Counter from '@/lib/Counter.svelte';
+import AppHeader from '@/components/common/AppHeader.svelte';
+import UiMainContent from '@/components/common/ui/UiMainContent.svelte';
 </script>
 
-<main>
-  <h1 class="text-2xl">
-    <span class="text-red-500">Hello Svelte</span>
-  </h1>
-  <Counter />
-</main>
+<AppHeader />
+<div class="relative bottom-28 h-auto">
+  <UiMainContent>
+    Eloo
+  </UiMainContent>
+</div>
 
 <style global lang="scss">
 @import 'src/assets/theme/index.scss';  
