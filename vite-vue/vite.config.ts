@@ -1,7 +1,17 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
-// https://vitejs.dev/config/
+function resolvePath(dir: string) {
+  return path.resolve(__dirname, dir);
+}
+
 export default defineConfig({
-  plugins: [vue()]
-})
+  plugins: [vue()],
+  resolve: {
+    alias: [
+      { find: '@', replacement: resolvePath('src') },
+      { find: '@shared', replacement: resolvePath('src/shared') },
+    ],
+  },
+});

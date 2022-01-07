@@ -1,7 +1,7 @@
 {
   "directories": {
     "views": "dupa",
-    "components": "components",
+    "components": "./",
     "vuex": "store",
     "modules": "modules",
     "unitTests": "__tests__"
