@@ -10,6 +10,8 @@ import UiMainContent from '@/components/common/ui/UiMainContent.svelte';
   </UiMainContent>
 </div>
 
-<style global lang="scss">
-@import 'src/assets/theme/index.scss';  
+<style lang="postcss" global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>

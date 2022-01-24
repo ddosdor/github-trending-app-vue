@@ -13,6 +13,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
     extraFileExtensions: ['.svelte', '.cjs'],
+
   },
   env: {
     es6: true,
@@ -54,6 +55,7 @@ module.exports = {
     allowImportExportEverywhere: 0,
     'import/no-dynamic-import': 'off',
     'func-names': 'off',
-    'object-curly-newline': 'off'    
+    'object-curly-newline': 'off',
+    'react/jsx-filename-extension': [1, { "extensions": [".js", ".jsx"] }], 
   }
 }

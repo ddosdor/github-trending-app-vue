@@ -1,19 +1,21 @@
-import sveltePreprocess from 'svelte-preprocess'
-import * as sass from 'sass'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
+import sveltePreprocess from 'svelte-preprocess';
+import * as sass from 'sass';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
+
+import tailwindConfig from './tailwind.config.cjs';
 
 export default {
   preprocess: sveltePreprocess({
     postcss: {
       plugins: [
-        tailwindcss,
-        autoprefixer,
+        tailwindcss(),
+        autoprefixer(),
       ],
     },    
     sass: {
       renderSync: true,
       implementation: sass,
-    }
-  })
-}
+    },
+  }),
+};
