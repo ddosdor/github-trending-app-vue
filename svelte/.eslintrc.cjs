@@ -58,6 +58,19 @@ module.exports = {
     'import/no-dynamic-import': 'off',
     'func-names': 'off',
     'object-curly-newline': 'off',
-    "react/jsx-filename-extension": [0]
+    'react/jsx-filename-extension': [0],
+    '@typescript-eslint/member-delimiter-style': [
+      'error', {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        },
+        "multilineDetection": "brackets"
+      }
+    ],
   }
 }
