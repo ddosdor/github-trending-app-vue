@@ -1,3 +1,5 @@
+const tsConfig = require('./tsconfig.eslint.json');
+
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -33,7 +35,7 @@ module.exports = {
     'svelte3/ignore-styles': () => true
   },
   plugins: ['svelte3', '@typescript-eslint'],
-  ignorePatterns: ['node_modules'],
+  ignorePatterns: tsConfig.exclude,
   rules: {
     'max-len': [ 'warn', { code: 160 } ],
     'linebreak-style': 0,
@@ -56,6 +58,6 @@ module.exports = {
     'import/no-dynamic-import': 'off',
     'func-names': 'off',
     'object-curly-newline': 'off',
-    'react/jsx-filename-extension': [1, { "extensions": [".js", ".jsx"] }], 
+    "react/jsx-filename-extension": [0]
   }
 }

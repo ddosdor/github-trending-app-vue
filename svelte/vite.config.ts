@@ -6,8 +6,6 @@ function resolvePath(dir: string) {
   return path.resolve(__dirname, dir);
 }
 
-console.log(resolvePath('src'));
-
 export default defineConfig({
   plugins: [svelte()],
   resolve: {

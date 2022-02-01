@@ -15,17 +15,9 @@
     ],
   },
   "include": [
-    "*.ts",
-    "*.cjs",
-    "*.js",
     "src/**/*.d.ts",
     "src/**/*.ts",
     "src/**/*.js",
     "src/**/*.svelte"
   ],
-  "exclude": [
-    "tailwind.config.cjs",
-    "svelte.config.js"
-  ]
-
 }
