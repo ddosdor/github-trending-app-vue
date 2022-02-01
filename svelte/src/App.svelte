@@ -1,12 +1,18 @@
 <script lang="ts">
+import RouterView from './RouterView.svelte';
 import AppHeader from '@/components/common/AppHeader.svelte';
 import UiMainContent from '@/components/common/ui/UiMainContent.svelte';
+import UiLoadingContentWrapper from './components/common/ui/UiLoadingContentWrapper.svelte';
 </script>
 
 <AppHeader />
 <div class="relative bottom-28 h-auto">
   <UiMainContent>
-    Eloo
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <UiLoadingContentWrapper isLoading={false}>
+      <RouterView />
+    </UiLoadingContentWrapper>
   </UiMainContent>
 </div>
 
