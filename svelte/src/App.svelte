@@ -14,4 +14,10 @@ import UiMainContent from '@/components/common/ui/UiMainContent.svelte';
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+  @layer base {
+    html, body {
+      @apply bg-gray-200 text-gray-700 h-full;    
+    }
+  }
 </style>
