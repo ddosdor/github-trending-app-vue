@@ -1,0 +1,12 @@
+<div class="UiLoadingContentWrapper relative">
+  <div *ngIf="isLoading"
+       class="absolute top-14 w-full animate-fade-in-down"
+  >
+    <app-ui-loading-spinner></app-ui-loading-spinner>
+  </div>
+  <div [class.opacity-5]="isLoading"
+       [class.animate-fade-in-up]="!isLoading"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
